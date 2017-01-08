@@ -23,7 +23,7 @@
 
 
 {% if salt['pillar.get']('backupmanager:upload:ssh:hosts') %}
-{% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts, [])%}
+{% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts', []) %}
 {{ hostitem }}:
   ssh_known_hosts:
     - present
