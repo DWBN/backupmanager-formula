@@ -17,7 +17,7 @@
 /root/.backup-manager_my.cnf:
   file.managed:
     - source: salt://backupmanager/files/.backup-manager_my.cnf
-    - chmod: 600
+    - mode: 600
     - template: jinja
 {% endif %}
 
