@@ -22,11 +22,19 @@
 {% endif %}
 
 
+# {% if salt['pillar.get']('backupmanager:upload:ssh:hosts') %}
+# {% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts', []) %}
+# {{ hostitem }}:
+#   ssh_known_hosts:
+#     - present
+#     - user: root
+# {% endfor %}
+# {% endif %}
+
+
 {% if salt['pillar.get']('backupmanager:upload:ssh:hosts') %}
-{% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts', []) %}
-{{ hostitem }}:
+salt['pillar.get']('backupmanager:upload:ssh:hosts')}:
   ssh_known_hosts:
     - present
     - user: root
-{% endfor %}
 {% endif %}
