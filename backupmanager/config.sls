@@ -16,7 +16,7 @@
 {% if salt['pillar.get']('backupmanager:mysql:adminpass') %}
 /root/.backup-manager_my.cnf:
   file.managed:
-    - source: salt://backupmanager/files/.backup-manager_my.conf
+    - source: salt://backupmanager/files/.backup-manager_my.cnf
     - chmod: 600
     - template: jinja
 {% endif %}
