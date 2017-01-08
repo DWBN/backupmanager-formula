@@ -1,0 +1,3 @@
+# managed by salt, don't edit this file!
+[client]
+password={{ salt['pillar.get']('backupmanager:mysql:adminpass') }}

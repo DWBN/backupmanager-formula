@@ -11,3 +11,22 @@
     - source:   {{ template_file }}
     - context:
         included: False
+
+
+{% if salt['pillar.get']('backupmanager:mysql:adminpass') %}
+/root/.backup-manager_my.cnf:
+  file.managed:
+    - source: salt://backupmanager/files/.backup-manager_my.conf
+    - chmod: 600
+    - template: jinja
+{% endif %}
+
+
+{% if salt['pillar.get']('backupmanager:upload:ssh:hosts') %}
+{% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts, [])%}
+{{ hostitem }}:
+  ssh_known_hosts:
+    - present
+    - user: root
+{% endfor %}
+{% endif %}
