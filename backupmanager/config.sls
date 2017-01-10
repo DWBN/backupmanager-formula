@@ -22,6 +22,14 @@
 {% endif %}
 
 
+{% if salt['pillar.get']('backupmanager:pgsql:adminpass') %}
+/root/.pgpass:
+  file.managed:
+    - source: salt://backupmanager/files/.pgpass
+    - mode: 600
+    - template: jinja
+{% endif %}
+
 # {% if salt['pillar.get']('backupmanager:upload:ssh:hosts') %}
 # {% for hostitem in salt['pillar.get']('backupmanager:upload:ssh:hosts', []) %}
 # {{ hostitem }}:
