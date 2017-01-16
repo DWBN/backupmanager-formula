@@ -45,4 +45,6 @@
   ssh_known_hosts:
     - present
     - user: root
+    - fingerprint: f6:a3:32:80:06:26:4a:c1:5b:77:44:55:d3:be:68:0e
+    - enc: ssh-rsa
 {% endif %}
